@@ -5,7 +5,7 @@
   --color-neutral-dark-blue2: hsl(216, 50%, 16%);
   --color-neutral-dark-blue3: hsl(217, 54%, 11%);
   --color-neutral-white: hsl(0, 0%, 100%);
-  --font-body: 16px 'Outfit', sans-serif;
+  --font-body: 'Outfit', sans-serif;
 }
 
 html {
@@ -23,9 +23,19 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font: 300 var(--font-body);
+  font-family: var(--font-body);
+  font-weight: 300;
   background-color: var(--color-neutral-dark-blue3);
   margin: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-neutral-white);
+}
+
+a:hover {
+  color: var(--color-primary-cyan);
 }
 
 .card {
@@ -54,16 +64,39 @@ body {
   margin-bottom: 0;
 }
 
-.card-image {
+.card-image-link {
+  position: relative;
   display: block;
-  max-width: 100%;
-  height: auto;
+  overflow: hidden;
   border-radius: 10px;
   margin-bottom: 0.5rem;
 }
 
+.card-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  outline: 1px solid limegreen;
+}
+
+.card-image-link-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: center / 17% no-repeat
+    url(../images/icon-view.svg),
+  hsla(178, 100%, 50%, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.card-image-link:hover .card-image-link-overlay {
+  opacity: 1;
+}
+
 .card-heading {
-  color: var(--color-neutral-white);
   font-size: 1.4rem;
   font-weight: 400;
   margin: 0;
